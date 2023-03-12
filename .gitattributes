@@ -13,3 +13,7 @@
 
 # TypeScript
 *.ts text eol=lf
+
+# Golang
+.go text eol=lf
+.mod text eol=lf
