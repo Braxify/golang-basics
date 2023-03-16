@@ -2,14 +2,23 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
-	fmt.Println("test")
-	go say("hi")
+	ch := make(chan int)
+	go test(ch)
+
+	for i := range ch {
+		fmt.Println(i)
+	}
 }
 
-func say(w string) {
-	// time.Sleep(5 * time.Second)
-	fmt.Println(w)
+func test(ch chan int) {
+	for i := 0; i < 3; i++ {
+		time.Sleep(100 * time.Millisecond)
+		ch <- i
+	}
+
+	close(ch)
 }
