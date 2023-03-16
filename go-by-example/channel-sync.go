@@ -12,14 +12,12 @@ func main() {
 	for i := 0; i < 10; i++ {
 		wg.Add(1)
 
-		j := i
-
-		go func() {
+		go func(i int) {
 			defer wg.Done()
 
-			fmt.Printf("%d Gorouting is working...\n", j)
+			fmt.Printf("%d Gorouting is working...\n", i)
 			time.Sleep(300 * time.Millisecond)
-		}()
+		}(i)
 	}
 
 	wg.Wait()
