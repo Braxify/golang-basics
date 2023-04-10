@@ -3,9 +3,12 @@ package main
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 func main() {
+	startTime := time.Now()
+
 	arr1 := []int{1, 2, 3, 4, 5}
 	arr2 := []int{5, 2}
 
@@ -43,4 +46,10 @@ func main() {
 	}
 
 	fmt.Println()
+
+	endTime := time.Now()
+	duration := endTime.Sub(startTime).Seconds()
+	// seconds := float64(duration.Nanoseconds()) / 1e9
+
+	fmt.Printf("Час виконання програми: %.6f с\n", duration)
 }
